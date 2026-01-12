@@ -1,0 +1,13 @@
+from datetime import datetime 
+
+# Спросим имя пользователя
+name = input("Введите ваше имя: ")
+
+# Получаем текущее время
+now = datetime.now()
+
+# Форматируем время в нужном виде
+formatted_time = now.strftime("%Y:%m:%d - %H:%M:%S")
+
+# Выводим сообщение
+print(f"{formatted_time} - Привет, {name}!")
