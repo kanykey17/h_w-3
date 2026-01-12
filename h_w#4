@@ -1,0 +1,43 @@
+import tkinter as tk
+from tkinter import messagebox
+
+# История приветствий
+history = []
+
+def add_greeting():
+    name = entry.get()
+    if name:
+        greeting = f"Привет, {name}!"
+        history.append(greeting)
+        update_listbox()
+        entry.delete(0, tk.END)
+
+def delete_last():
+    if history:
+        history.pop()  # удаляем последний элемент
+        update_listbox()
+    else:
+        messagebox.showinfo("Инфо", "История пуста!")
+
+def update_listbox():
+    listbox.delete(0, tk.END)
+    for item in history:
+        listbox.insert(tk.END, item)
+
+# GUI
+root = tk.Tk()
+root.title("Приветствия")
+
+entry = tk.Entry(root)
+entry.pack()
+
+add_btn = tk.Button(root, text="Добавить", command=add_greeting)
+add_btn.pack()
+
+delete_btn = tk.Button(root, text="Удалить последнее", command=delete_last)
+delete_btn.pack()
+
+listbox = tk.Listbox(root, width=50)
+listbox.pack()
+
+root.mainloop()
